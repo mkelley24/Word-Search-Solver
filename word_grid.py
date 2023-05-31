@@ -30,7 +30,7 @@ class WordGrid:
         i: int = 0
         horizontal_list: List[str] = []
         while i < len(self.grid):
-            horizontal_list.append(_get_horizontal_line(i))
+            horizontal_list.append(self._get_horizontal_line(i))
             i += 1
         return horizontal_list
 

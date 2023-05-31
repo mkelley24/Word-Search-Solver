@@ -18,6 +18,24 @@ class WordGrid:
     def get_grid(self) -> List[List[str]]:
         return self.grid
 
+    def _get_horizontal_line(self, i: int):
+        line: str = ""
+        j: int = 0
+        while i < len(self.grid):
+            line += self.grid[i][j]
+            j += 1
+        return line
+
+    def get_horizontal_line_list(self):
+        i: int = 0
+        horizontal_list: List[str] = []
+        while i < len(self.grid):
+            horizontal_list.append(_get_horizontal_line(i))
+            i += 1
+        return horizontal_list
+
+
+
 # helper function
 def string_to_list(line: str) -> List[str]:
     letter_list: List[str] = []

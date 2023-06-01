@@ -69,6 +69,9 @@ class WordGrid:
             i += 1
             j += 1
         return line
+
+    def get_left_diagonal_line_list(self):
+
 # helper function
 def string_to_list(line: str) -> List[str]:
     letter_list: List[str] = []

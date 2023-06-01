@@ -21,7 +21,7 @@ class WordGrid:
     def _get_horizontal_line(self, i: int):
         line: str = ""
         j: int = 0
-        while i < len(self.grid):
+        while j < len(self.grid):
             line += self.grid[i][j]
             j += 1
         return line
@@ -34,7 +34,13 @@ class WordGrid:
             i += 1
         return horizontal_list
 
-
+    def _get_vertical_line(self, j: int):
+        line: str = ""
+        i: int = 0
+        while i < len(self.grid[0]):
+            line += self.grid[i][j]
+            i += 1
+        return line
 
 # helper function
 def string_to_list(line: str) -> List[str]:

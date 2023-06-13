@@ -72,18 +72,12 @@ class WordGrid:
 
     def get_left_diagonal_line_list(self):
         left_diagonal_line_list: List[str] = []
-        i: int = 1
+        i: int = 0
         j: int = 0
-        temp: int = 0
         left_diagonal_line_list.append(self._get_left_diagonal_line(0, 0))
-        while i < len(self.grid) and j < len(self.grid[0]):
-            left_diagonal_line_list.append(self._get_left_diagonal_line(i, j))
-            if (i + j) % 2 == 0:
-                j += 1
-            else:
-                temp = i
-                i = j
-                j = temp
+        while i < len(self.grid) or j < len(self.grid[0]):
+            left_diagonal_line_list.append(self._get_left_diagonal_line(i, 0))
+            left_diagonal_line_list.append(self._get_left_diagonal_line(0, i))
         return left_diagonal_line_list
 # helper function
 def string_to_list(line: str) -> List[str]:

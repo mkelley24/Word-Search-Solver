@@ -20,3 +20,21 @@ class Test_WordGrid:
         test_output = [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]]
         test_grid = WordGrid(test_input)
         assert(compare_grids(test_grid.grid, test_output))
+
+    def test_get_horizontal_line_list(self):
+        test_input = ["ABC", "DEF", "GHI"]
+        test_lines = ["ABC", "DEF", "GHI"]
+        test_grid = WordGrid(test_input)
+        assert(test_grid.get_horizontal_line_list(), test_lines)
+
+    def test_get_vertical_line_list(self):
+        test_input = ["ABC", "DEF", "GHI"]
+        test_lines = ["ADG", "BEH", "CFI"]
+        test_grid = WordGrid(test_input)
+        assert(test_grid.get_vertical_line_list(), test_lines)
+
+    def test_get_left_diagonal_line_list(self):
+        test_input = ["ABC", "DEF", "GHI"]
+        test_lines = ["AEI", "DH", "G", "BF", "I"]
+        test_grid = WordGrid(test_input)
+        assert(test_grid.get_left_diagonal_line_list(), test_lines)

@@ -5,3 +5,5 @@ class Word:
         self.isFound: bool = False
         self.length: int = len(self.text)
         self.rev_text: str = new_word.reverse()
+        self.front_hash: int = 0
+        self.rev_hash: int = 0

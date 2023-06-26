@@ -4,9 +4,7 @@ from typing import List
 # stub for testing
 class WordGrid:
     def __init__(self, word_lines: List[str]):
-        self.grid: List[List[str]] = []
-        for line in word_lines:
-            self.grid.append(string_to_list(line))
+        self.grid: List[List[str]] = list(map(string_to_list, word_lines))
 
 
     def display(self):

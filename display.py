@@ -11,9 +11,9 @@ def open_file():
     if file:
         pass
 
-sudoku_btn_text = tk.StringVar()
-sudoku_btn = tk.Button(window, textvariable=sudoku_btn_text, command=lambda:open_file())
-sudoku_btn_text.set("Select Sudoku Puzzle")
-sudoku_btn.grid(column=1, row=2)
+word_search_btn_text = tk.StringVar()
+word_search_btn = tk.Button(window, textvariable=sudoku_btn_text, command=lambda:open_file())
+word_search_btn_text.set("Select Sudoku Puzzle")
+word_search_btn.grid(column=1, row=2)
 
 window.mainloop()

@@ -1,4 +1,5 @@
 from typing import List
+from point import Point
 
 
 # stub for testing
@@ -23,6 +24,19 @@ class WordGrid:
             line += self.grid[i][j]
             j += 1
         return line
+
+    def valid_point(self, i: int, j: int) -> bool:
+        '''
+        :param i: the column being checked
+        :param j: the row being checked
+        :return: returns true if the point is within the gird and false if not
+        '''
+        if i < 0 or j < 0:
+            return False
+        elif i >= len(self.grid) or j >= len(self.grid[0]):
+            return False
+        else:
+            return True
 
     def get_horizontal_line_list(self):
         i: int = 0

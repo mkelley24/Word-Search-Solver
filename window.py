@@ -31,6 +31,8 @@ class HorizontalWindow(Window):
     def _get_window_text(self, start: Point) -> str:
         i: int = start.y
         j: int = start.x
+        counter = 0
         letter_list: List[str] = []
-        while self.board.valid_point(i, j):
+        while self.board.valid_point(i, j) and counter < self.size:
             letter_list.append(self.board.grid[i, j])
+        return letter_list.collect()

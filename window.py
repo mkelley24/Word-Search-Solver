@@ -32,7 +32,7 @@ class HorizontalWindow(Window):
         i: int = start.y
         j: int = start.x
         counter = 0
-        letter_list: List[str] = []
+        window_text: str = ""
         while self.board.valid_point(i, j) and counter < self.size:
-            letter_list.append(self.board.grid[i, j])
-        return letter_list.collect()
+            window_text += self.board.grid[i][j]
+        return window_text

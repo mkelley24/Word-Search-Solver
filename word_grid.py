@@ -16,6 +16,9 @@ class WordGrid:
 
     def get_grid(self) -> List[List[str]]:
         return self.grid
+    
+    def get_letter(self, point: Point):
+        return self.grid[point.y][point.x]
 
     def _get_horizontal_line(self, i: int):
         line: str = ""
@@ -25,12 +28,13 @@ class WordGrid:
             j += 1
         return line
 
-    def valid_point(self, i: int, j: int) -> bool:
+    def valid_point(self, point: Point) -> bool:
         '''
-        :param i: the column being checked
-        :param j: the row being checked
+        :param point: a Point that contains grid coordinates
         :return: returns true if the point is within the gird and false if not
         '''
+        i: int = point.y
+        j: int = point.x
         if i < 0 or j < 0:
             return False
         elif i >= len(self.grid) or j >= len(self.grid[0]):

@@ -1,5 +1,5 @@
 
-def get_hash(input: str) -> int:
+def get_hash(input: List[str]) -> int:
     return 1
 
 def rehash(hash: int, new_char: str, old_char: str) -> int:

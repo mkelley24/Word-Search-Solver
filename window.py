@@ -20,6 +20,25 @@ class Window(ABC):
     def _get_window_text(self, start: Point) -> str:
         pass
 
+    def compare_word_to_window(self, plain_text: str) -> bool:
+        if len(plain_text) != len(self.text):
+            return False
+        for i in range(self.size):
+            if plain_text[i] != self.text[i]:
+                return False
+        return True
+
+    def compare_hash_to_window(self, word: Word):
+        word_present: bool = False
+        if word.front_hash == self.hash_value:
+            word_present = self.compare_word_to_window(word.text)
+        elif word.rev_hash == self.hash_value:
+            word_present = self.compare_word_to_window(word.rev_text)
+        else:
+            pass
+        word.isFound = word_present
+
+
 
 class HorizontalWindow(Window):
 
@@ -37,4 +56,5 @@ class HorizontalWindow(Window):
         return window_text
     
     def slide_window(self):
+        self
         pass

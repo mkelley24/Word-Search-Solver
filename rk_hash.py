@@ -1,3 +1,4 @@
+from typing import List
 
 def get_hash(input: List[str]) -> int:
     return 1

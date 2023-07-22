@@ -25,4 +25,4 @@ test_lines = [
 test_grid = WordGrid(test_lines)
 
 
-window.mainloop()
+root.mainloop()

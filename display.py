@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter.filedialog import askopenfile
+from word_grid import WordGrid
 
 window = tk.Tk()
 
@@ -13,8 +14,15 @@ def open_file():
         pass
 
 word_search_btn_text = tk.StringVar()
-word_search_btn = tk.Button(window, textvariable=sudoku_btn_text, command=lambda:open_file())
-word_search_btn_text.set("Select Sudoku Puzzle")
+word_search_btn = tk.Button(window, textvariable=word_search_btn_text, command=lambda:open_file())
+word_search_btn_text.set("Select Word Puzzle")
 word_search_btn.grid(column=1, row=2)
+test_lines = [
+    ['a', 'b', 'c', 'd'],
+    ['e', 'f', 'g', 'h'],
+    ['i', 'j', 'k', 'l']
+]
+test_grid = WordGrid(test_lines)
+
 
 window.mainloop()

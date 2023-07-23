@@ -1,33 +1,25 @@
 from typing import List
 from point import Point
-
+from letter import Letter
 
 # stub for testing
 class WordGrid:
     def __init__(self, word_lines: List[str]):
-        self.grid: List[List[str]] = list(map(string_to_list, word_lines))
+        self.grid: List[List[Letter]] = list(map(string_to_list, word_lines))
 
 
     def display(self):
         for i in self.grid:
             for j in i:
-                print(j)
+                print(j.letter_value)
             print("\n")
 
-    def get_grid(self) -> List[List[str]]:
+    def get_grid(self) -> List[List[Letter]]:
         return self.grid
     
     def get_letter(self, point: Point):
         return self.grid[point.y][point.x]
-
-    def _get_horizontal_line(self, i: int):
-        line: str = ""
-        j: int = 0
-        while j < len(self.grid):
-            line += self.grid[i][j]
-            j += 1
-        return line
-
+    
     def valid_point(self, point: Point) -> bool:
         '''
         :param point: a Point that contains grid coordinates
@@ -42,7 +34,15 @@ class WordGrid:
         else:
             return True
 
-    def get_horizontal_line_list(self):
+    def _get_horizontal_line(self, i: int) -> str:
+        line: str = ""
+        j: int = 0
+        while j < len(self.grid):
+            line += self.grid[i][j].letter_value
+            j += 1
+        return line
+
+    def get_horizontal_line_list(self) -> List[str]:
         i: int = 0
         horizontal_list: List[str] = []
         while i < len(self.grid):
@@ -50,7 +50,7 @@ class WordGrid:
             i += 1
         return horizontal_list
 
-    def _get_vertical_line(self, j: int):
+    def _get_vertical_line(self, j: int) -> str:
         '''
         :param j: the index of the column
         :return: a line of text from the indicated column
@@ -58,11 +58,11 @@ class WordGrid:
         line: str = ""
         i: int = 0
         while i < len(self.grid[0]):
-            line += self.grid[i][j]
+            line += self.grid[i][j].letter_value
             i += 1
         return line
 
-    def get_vertical_line_list(self):
+    def get_vertical_line_list(self) -> List[str]:
         '''
         :return: a list of vertical lines of text
         '''
@@ -73,7 +73,7 @@ class WordGrid:
             j += 1
         return vertical_list
 
-    def _get_left_diagonal_line(self, i: int, j: int):
+    def _get_left_diagonal_line(self, i: int, j: int) -> str:
         '''
         :param i: the starting row index
         :param j: the starting column index
@@ -81,12 +81,12 @@ class WordGrid:
         '''
         line: str = ""
         while i < len(self.grid) and j < len(self.grid[0]):
-            line += self.grid[i][j]
+            line += self.grid[i][j].letter_value
             i += 1
             j += 1
         return line
 
-    def get_left_diagonal_line_list(self):
+    def get_left_diagonal_line_list(self) -> List[str]:
         left_diagonal_line_list: List[str] = []
         i: int = 0
         j: int = 0
@@ -96,13 +96,13 @@ class WordGrid:
             left_diagonal_line_list.append(self._get_left_diagonal_line(0, i))
         return left_diagonal_line_list
 # helper function
-def string_to_list(line: str) -> List[str]:
-    letter_list: List[str] = []
+def string_to_list(line: str) -> List[Letter]:
+    letter_list: List[Letter] = []
     for i in range(len(line)):
-        letter_list.append(line[i])
+        letter_list.append(Letter(line[i]))
     return letter_list
 
-test_input = ["ABC", "DEF", "GHI"]
-test_output = [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]]
-test_grid = WordGrid(test_input)
-test_grid.display()
+# test_input = ["ABC", "DEF", "GHI"]
+# test_output = [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]]
+# test_grid = WordGrid(test_input)
+# test_grid.display()

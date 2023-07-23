@@ -4,6 +4,7 @@ from point import Point
 from rk_hash import get_hash, rehash
 from word import Word
 from typing import List
+from letter import Letter
 
 
 class Window(ABC):
@@ -12,7 +13,7 @@ class Window(ABC):
         self.size = size
         self.current_position: Point = start
         self.board: WordGrid = board
-        self.text: List[str] = self._get_window_text(start)
+        self.text: List[Letter] = self._get_window_text(start)
         self.hash_value: int = get_hash(self.text)
         # self.point_shift: Point = Point(0, 0)
 
@@ -24,7 +25,7 @@ class Window(ABC):
         if len(plain_text) != len(self.text):
             return False
         for i in range(self.size):
-            if plain_text[i] != self.text[i]:
+            if plain_text[i] != self.text[i].letter_value:
                 return False
         return True
 
@@ -56,5 +57,4 @@ class HorizontalWindow(Window):
         return window_text
     
     def slide_window(self):
-        self
         pass

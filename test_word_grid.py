@@ -1,8 +1,9 @@
 from word_grid import WordGrid
 from typing import List
 from point import Point
+from letter import Letter
 
-def compare_grids(actual: List[List[str]], test_value: List[List[str]]) -> bool:
+def compare_grids(actual: List[List[Letter]], test_value: List[List[str]]) -> bool:
     if len(actual) != len(test_value):
         return False
     else:
@@ -11,7 +12,7 @@ def compare_grids(actual: List[List[str]], test_value: List[List[str]]) -> bool:
                 return False
             else:
                 for j in range(len(actual[i])):
-                    if actual[i][j] != test_value[i][j]:
+                    if actual[i][j].letter_value != test_value[i][j]:
                         return False
     return True
 
@@ -25,7 +26,7 @@ def test_get_letter():
     test_input = ["ABC", "DEF", "GHI"]
     test_grid = WordGrid(test_input)
     test_point = Point(0, 1)
-    assert(test_grid.get_letter(test_point) == "D")
+    assert(test_grid.get_letter(test_point).letter_value == "D")
 
 def test_is_valid_on_point_with_invalid_x():
     test_input = ["ABC", "DEF", "GHI", "JKL"]

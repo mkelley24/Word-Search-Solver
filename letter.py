@@ -6,5 +6,5 @@ class Letter:
         self.letter_value: str = letter_input
         self.word_section = False
 
-    def make_textbox(self) -> Text:
-        pass
+    def set_found(self) -> None:
+        self.letter_value = True

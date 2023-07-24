@@ -102,6 +102,7 @@ def string_to_list(line: str) -> List[Letter]:
         letter_list.append(Letter(line[i]))
     return letter_list
 
+
 # test_input = ["ABC", "DEF", "GHI"]
 # test_output = [["A", "B", "C"], ["D", "E", "F"], ["G", "H", "I"]]
 # test_grid = WordGrid(test_input)

@@ -66,4 +66,22 @@ class VerticalWindow(Window):
 
     def slide_window(self):
         pass
+
+class LeftDiagonalWindow(Window):
+
+    def __init__(self, board: WordGrid, size: int, start: Point):
+        self.point_shift = Point(0, 1)
+        super().__init__(board, size, start)
+
+    def slide_window(self):
+        pass
+
+class RightDiagonalWindow(Window):
+
+    def __init__(self, board: WordGrid, size: int, start: Point):
+        self.point_shift = Point(0, 1)
+        super().__init__(board, size, start)
+
+    def slide_window(self):
+        pass
         

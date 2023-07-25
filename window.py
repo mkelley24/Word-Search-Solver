@@ -11,7 +11,7 @@ class Window(ABC):
 
     def __init__(self, board: WordGrid, size: int, start: Point):
         self.size = size
-        self.current_position: Point = start
+        self.head: Point = start
         self.board: WordGrid = board
         self.text: List[Letter] = self._get_window_text(start)
         self.hash_value: int = get_hash(self.text)

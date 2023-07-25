@@ -18,8 +18,24 @@ class Point:
         return Point(self.x * scalar, self.y * scalar)
     
     def span(self, point_shift, length: int):
-        new_shift: Point = None
-        return Point(self.x * length, self.y * length)
+        new_shift: Point = point_shift.scale_point(length)
+        return self + new_shift
     
     def __add__(self, addend):
         return Point(self.x + addend.x, self.y + addend.y)
+    
+    def is_equal(self, other) -> bool:
+        if self.x != other.x:
+            return False
+        elif self.y != other.y:
+            return False
+        else:
+            return True
+    
+    def __eq__(self, other) -> bool:
+        if self.x != other.x:
+            return False
+        elif self.y != other.y:
+            return False
+        else:
+            return True

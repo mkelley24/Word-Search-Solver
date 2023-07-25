@@ -15,7 +15,6 @@ class Window(ABC):
         self.board: WordGrid = board
         self.text: List[Letter] = self._get_window_text(start)
         self.hash_value: int = get_hash(self.text)
-        # self.point_shift: Point = Point(0, 0)
 
     def _get_window_text(self, start: Point) -> str:
         counter = 0
@@ -55,4 +54,16 @@ class HorizontalWindow(Window):
     def __init__(self, board: WordGrid, size: int, start: Point):
         self.point_shift = Point(1, 0)
         super().__init__(board, size, start)
+
+    def slide_window(self):
+        pass
+
+class VerticalWindow(Window):
+
+    def __init__(self, board: WordGrid, size: int, start: Point):
+        self.point_shift = Point(0, 1)
+        super().__init__(board, size, start)
+
+    def slide_window(self):
+        pass
         

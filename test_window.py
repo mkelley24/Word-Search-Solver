@@ -36,14 +36,15 @@ def test_compare_word_same():
 
 def test_window_iteration():
     test_lines: List[List[str]] = [
-        ["a", "b", "c", "d", "e"],
-        ["f", "g", "h", "i", "j"],
-        ["k", "l", "m", "n", "o"]
+        ["a", "b", "c", "d", "e", "x", "y", "z"],
+        ["f", "g", "h", "i", "j", "p", "q", "r"],
+        ["k", "l", "m", "n", "o", "s", "t", "u"]
     ]
     test_grid: WordGrid = WordGrid(test_lines)
-    start:Point = Point(0, 0)
+    start: Point = Point(0, 0)
     test_window: HorizontalWindow = HorizontalWindow(test_grid, 3, start)
     sample_point: Point = start.span(Point(1, 0), 4)
+    print(repr(test_window.current_position))
     print(repr(sample_point))
     my_iter = test_window.__iter__()
     my_iter.__next__()

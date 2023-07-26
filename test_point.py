@@ -17,6 +17,15 @@ def test_span():
     shift_point: Point = Point(1, 1)
     assert(point_a.span(shift_point, 4) == Point(7, 4))
 
+def test_horizontal_span():
+    point_a: Point = Point(0, 0)
+    shifter: Point = Point(1, 0)
+    new_point: Point = point_a.span(shifter, 3)
+    print("Original Point: " + repr(point_a))
+    print("shift Point: " + repr(shifter))
+    print("new Point: " + repr(new_point))
+    assert(new_point == Point(3, 0))
+
 def test_span_on_grid():
     test_lines: List[List[str]] = [
         ["a", "b", "c", "d", "e"],

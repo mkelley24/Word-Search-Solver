@@ -55,14 +55,14 @@ class HorizontalWindow(Window):
     def __init__(self, board: WordGrid, size: int, start: Point):
         self.point_shift = Point(1, 0)
         super().__init__(board, size, start)
-        if self.board.valid_point(start.span(self.point_shift, self.size)):
+        if self.board.valid_point(start.span(self.point_shift, self.size)) == False:
             raise WindowTooSmall
         
     def __iter__(self):
         return self
     
     def __next__(self):
-        next_point: Point = self.current_position.span(self.point_shift, self.size + 1)
+        next_point: Point = self.current_position.span(self.point_shift, self.size)
         if self.board.valid_point(next_point) == False:
             raise StopIteration
         else:

@@ -3,6 +3,9 @@ class Point:
         self.x: int = x
         self.y: int = y
 
+    def __repr__(self):
+        return "Point(x= {x_value}, y= {y_value})".format(x_value = self.x, y_value = self.y)
+
     def move_point(self, shift) -> None:
         self.x += shift.x
         self.y += shift.y

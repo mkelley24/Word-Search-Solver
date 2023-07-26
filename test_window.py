@@ -36,9 +36,9 @@ def test_compare_word_same():
 
 def test_window_iteration():
     test_lines: List[List[str]] = [
-        ["a", "b", "c", "d", "e", "x", "y", "z"],
-        ["f", "g", "h", "i", "j", "p", "q", "r"],
-        ["k", "l", "m", "n", "o", "s", "t", "u"]
+        ["a", "b", "c", "d", "e", "x", "y", "z", "q"],
+        ["f", "g", "h", "i", "j", "p", "q", "r", "w"],
+        ["k", "l", "m", "n", "o", "s", "t", "u", "e"]
     ]
     test_grid: WordGrid = WordGrid(test_lines)
     start: Point = Point(0, 0)
@@ -48,4 +48,6 @@ def test_window_iteration():
     print(repr(sample_point))
     my_iter = test_window.__iter__()
     my_iter.__next__()
+    for x in test_window.text:
+         print(x.letter_value)
     assert(test_window.compare_word_to_window("bcd"))

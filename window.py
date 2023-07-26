@@ -69,7 +69,7 @@ class HorizontalWindow(Window):
             new_letter: Letter = self.board.get_letter(next_point)
             self.hash_value = rehash(self.hash_value, new_letter.letter_value, self.text[0].letter_value)
             self.text.pop(0)
-            self.text.push(new_letter)
+            self.text.append(new_letter)
             self.current_position = self.current_position + self.point_shift
 
     # def slide_window(self):

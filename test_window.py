@@ -48,6 +48,5 @@ def test_window_iteration():
     print(repr(sample_point))
     my_iter = test_window.__iter__()
     my_iter.__next__()
-    for x in test_window.text:
-         print(x.letter_value)
+    print(test_window.text)
     assert(test_window.compare_word_to_window("bcd"))

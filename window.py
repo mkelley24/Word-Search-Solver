@@ -12,6 +12,7 @@ class Window(ABC):
 
     def __init__(self, board: WordGrid, size: int, start: Point):
         self.size = size
+        self.head = start
         self.current_position: Point = start
         self.board: WordGrid = board
         self.text: List[Letter] = self._get_window_text(start)
@@ -19,7 +20,7 @@ class Window(ABC):
 
     def _get_window_text(self, start: Point) -> str:
         counter = 0
-        window_text: List[str] = []
+        window_text: List[Letter] = []
         while self.board.valid_point(start) and counter < self.size:
             window_text.append(self.board.get_letter(start))
             start.move_point(self.point_shift)

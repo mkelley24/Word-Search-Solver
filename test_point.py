@@ -36,3 +36,14 @@ def test_span_on_grid():
     start:Point = Point(0, 0)
     next_point: Point = start.span(Point(1, 0), 4)
     assert(test_grid.valid_point(next_point))
+
+def test_copy_point_copies():
+    point_a: Point = Point(3, 1)
+    point_b: Point = point_a.copy_point()
+    assert(point_a == point_b)
+
+def test_copy_separate_from_base():
+    point_a: Point = Point(3, 1)
+    point_b: Point = point_a.copy_point()
+    point_b.move_point(Point(2, 3))
+    assert(point_a == Point(3, 1))

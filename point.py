@@ -42,3 +42,6 @@ class Point:
             return False
         else:
             return True
+        
+    def copy_point(self):
+        return Point(self.x, self.y)

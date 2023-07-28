@@ -28,7 +28,7 @@ class Window():
         counter = 0
         if self.board.valid_point(self.head) == False:
             raise WindowTooSmall
-        while self.board.valid_point(self.head.span(self.point_shift, self.size)) == False:
+        while self.board.valid_point(self.head.span(self.point_shift, self.size - 1)) == False:
             if self.board.valid_point(self.head + self.head_shift) == False:
                 raise WindowTooSmall
             else:

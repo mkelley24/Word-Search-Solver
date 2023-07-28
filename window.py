@@ -66,22 +66,6 @@ class Window():
         return self
     
     def __next__(self):
-        pass
-
-
-
-class HorizontalWindow(Window):
-
-    def __init__(self, board: WordGrid, size: int, start: Point):
-        self.point_shift = Point(1, 0)
-        super().__init__(board, size, start)
-        if self.board.valid_point(start.span(self.point_shift, self.size)) == False:
-            raise WindowTooSmall
-        
-    def __iter__(self):
-        return self
-    
-    def __next__(self):
         next_point: Point = self.current_position.span(self.point_shift, self.size)
         if self.board.valid_point(next_point) == False:
             raise StopIteration
@@ -91,42 +75,3 @@ class HorizontalWindow(Window):
             self.text.pop(0)
             self.text.append(new_letter)
             self.current_position = self.current_position + self.point_shift
-
-    # def slide_window(self):
-    #     first_char: Letter = self.text[0]
-    #     self.text.pop(0)
-
-
-class VerticalWindow(Window):
-
-    def __init__(self, board: WordGrid, size: int, start: Point):
-        self.point_shift = Point(0, 1)
-        super().__init__(board, size, start)
-        if self.board.valid_point(start.span(self.point_shift, self.size)):
-            raise WindowTooSmall
-
-    # def slide_window(self):
-    #     pass
-
-class LeftDiagonalWindow(Window):
-
-    def __init__(self, board: WordGrid, size: int, start: Point):
-        self.point_shift = Point(1, 1)
-        super().__init__(board, size, start)
-        if self.board.valid_point(start.span(self.point_shift, self.size)):
-            raise WindowTooSmall
-
-    # def slide_window(self):
-    #     pass
-
-class RightDiagonalWindow(Window):
-
-    def __init__(self, board: WordGrid, size: int, start: Point):
-        self.point_shift = Point(-1, 1)
-        super().__init__(board, size, start)
-        if self.board.valid_point(start.span(self.point_shift, self.size)):
-            raise WindowTooSmall
-
-    # def slide_window(self):
-    #     pass
-        

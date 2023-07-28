@@ -18,8 +18,8 @@ def test_get_window_text():
         ["k", "l", "m", "n", "o"]
     ]
     test_grid: WordGrid = WordGrid(test_lines)
-    start:Point = Point(0, 0)
-    test_window: HorizontalWindow = HorizontalWindow(test_grid, 3, start)
+    start: Point = Point(0, 0)
+    test_window: Window = Window(test_grid, 3, start, Direction.Horizontal)
     assert(compare_lists(test_window.text, ["a", "b", "c"]))
 
 def test_compare_word_same():
@@ -30,7 +30,7 @@ def test_compare_word_same():
     ]
     test_grid: WordGrid = WordGrid(test_lines)
     start:Point = Point(0, 0)
-    test_window: HorizontalWindow = HorizontalWindow(test_grid, 3, start)
+    test_window: Window = Window(test_grid, 3, start, Direction.Horizontal)
     print(test_window.text)
     assert(test_window.compare_word_to_window("abc"))
 
@@ -42,12 +42,11 @@ def test_window_iteration():
     ]
     test_grid: WordGrid = WordGrid(test_lines)
     start: Point = Point(0, 0)
-    test_window: HorizontalWindow = HorizontalWindow(test_grid, 3, start)
+    test_window: Window = Window(test_grid, 3, start, Direction.Horizontal)
     sample_point: Point = start.span(Point(1, 0), 4)
     print(repr(test_window.current_position))
     print(repr(sample_point))
     my_iter = test_window.__iter__()
     my_iter.__next__()
-    for x in test_window.text:
-         print(x.letter_value)
+    print(test_window.text)
     assert(test_window.compare_word_to_window("bcd"))

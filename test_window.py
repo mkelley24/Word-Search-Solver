@@ -52,5 +52,37 @@ def test_window_iteration():
     print(test_window.text)
     assert(test_window.compare_word_to_window("bcd"))
 
-def test_throws_small_exception():
-     pass
+def test_throws_small_exception_horizontal():
+    test_lines: List[List[str]] = [
+        ["a", "b", "c", "d", "e"],
+        ["f", "g", "h", "i", "j"],
+        ["k", "l", "m", "n", "o"]
+    ]
+    test_grid: WordGrid = WordGrid(test_lines)
+    start: Point = Point(0, 0)
+    with pytest.raises(WindowTooSmall):
+        test_window: Window = Window(test_grid, 6, start, Direction.Horizontal)
+
+def test_no_exception_horizontal():
+    test_lines: List[List[str]] = [
+        ["a", "b", "c", "d", "e"],
+        ["f", "g", "h", "i", "j"],
+        ["k", "l", "m", "n", "o"]
+    ]
+    test_grid: WordGrid = WordGrid(test_lines)
+    start: Point = Point(0, 0)
+    test_window: Window = Window(test_grid, 5, start, Direction.Horizontal)
+    assert(True)
+
+def test_window_get_text():
+    test_lines: List[List[str]] = [
+        ["a", "b", "c", "d", "e"],
+        ["f", "g", "h", "i", "j"],
+        ["k", "l", "m", "n", "o"]
+    ]
+    test_grid: WordGrid = WordGrid(test_lines)
+    start: Point = Point(0, 0)
+    test_window: Window = Window(test_grid, 4, start, Direction.Horizontal)
+    print("New Test: ")
+    print(test_window.text)
+    

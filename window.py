@@ -19,7 +19,7 @@ class Window():
         self.current_position: Point = start
         self.board: WordGrid = board
         try:
-            self.text: List[Letter] = self._get_window_text(start)
+            self.text: List[Letter] = self._get_window_text()
         except WindowTooSmall:
             raise WindowTooSmall
         self.hash_value: int = get_hash(self.text)
@@ -61,6 +61,12 @@ class Window():
         else:
             pass
         word.isFound = word_present
+
+    def __iter__(self):
+        return self
+    
+    def __next__(self):
+        pass
 
 
 

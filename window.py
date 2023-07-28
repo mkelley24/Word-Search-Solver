@@ -18,7 +18,10 @@ class Window():
         self.head_shift: Point = Direction.get_head_shift(direction)
         self.current_position: Point = start
         self.board: WordGrid = board
-        self.text: List[Letter] = self._get_window_text(start)
+        try:
+            self.text: List[Letter] = self._get_window_text(start)
+        except WindowTooSmall:
+            raise WindowTooSmall
         self.hash_value: int = get_hash(self.text)
 
     def _get_window_text(self) -> str:
@@ -26,7 +29,7 @@ class Window():
         if self.board.valid_point(self.head) == False:
             raise WindowTooSmall
         while self.board.valid_point(self.head.span(self.point_shift, self.size)) == False:
-            if self.board.valid_point(self.head + self.head_shift):
+            if self.board.valid_point(self.head + self.head_shift) == False:
                 raise WindowTooSmall
             else:
                 self.head_shift.move_point(self.head_shift)

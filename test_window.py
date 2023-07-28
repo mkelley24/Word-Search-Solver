@@ -19,7 +19,7 @@ def test_get_window_text():
     ]
     test_grid: WordGrid = WordGrid(test_lines)
     start:Point = Point(0, 0)
-    test_window: HorizontalWindow = HorizontalWindow(test_grid, 3, start)
+    test_window: Window = Window(test_grid, 3, start)
     assert(compare_lists(test_window.text, ["a", "b", "c"]))
 
 def test_compare_word_same():
@@ -30,7 +30,7 @@ def test_compare_word_same():
     ]
     test_grid: WordGrid = WordGrid(test_lines)
     start:Point = Point(0, 0)
-    test_window: HorizontalWindow = HorizontalWindow(test_grid, 3, start)
+    test_window: Window = Window(test_grid, 3, start)
     print(test_window.text)
     assert(test_window.compare_word_to_window("abc"))
 
@@ -42,7 +42,7 @@ def test_window_iteration():
     ]
     test_grid: WordGrid = WordGrid(test_lines)
     start: Point = Point(0, 0)
-    test_window: HorizontalWindow = HorizontalWindow(test_grid, 3, start)
+    test_window: Window = Window(test_grid, 3, start)
     sample_point: Point = start.span(Point(1, 0), 4)
     print(repr(test_window.current_position))
     print(repr(sample_point))

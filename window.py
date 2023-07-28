@@ -6,24 +6,34 @@ from word import Word
 from typing import List
 from letter import Letter
 from custom_exceptions import WindowTooSmall
+from direction import Direction
 
 
-class Window(ABC):
+class Window():
 
-    def __init__(self, board: WordGrid, size: int, start: Point):
-        self.size = size
-        self.head = start
+    def __init__(self, board: WordGrid, size: int, start: Point, direction: Direction):
+        self.size: int = size
+        self.head: Point = start
+        self.point_shift: Point = Direction.get_shift_point(direction)
+        self.head_shift: Point = Direction.get_head_shift(direction)
         self.current_position: Point = start
         self.board: WordGrid = board
         self.text: List[Letter] = self._get_window_text(start)
         self.hash_value: int = get_hash(self.text)
 
-    def _get_window_text(self, start: Point) -> str:
+    def _get_window_text(self) -> str:
         counter = 0
+        if self.board.valid_point(self.head) == False:
+            raise WindowTooSmall
+        while self.board.valid_point(self.head.span(self.point_shift, self.size)) == False:
+            if self.board.valid_point(self.head + self.head_shift):
+                raise WindowTooSmall
+            else:
+                self.head_shift.move_point(self.head_shift)
         window_text: List[Letter] = []
-        while self.board.valid_point(start) and counter < self.size:
-            window_text.append(self.board.get_letter(start))
-            start.move_point(self.point_shift)
+        while self.board.valid_point(self.head) and counter < self.size:
+            window_text.append(self.board.get_letter(self.head))
+            self.head.move_point(self.point_shift)
             counter += 1
         return window_text
     

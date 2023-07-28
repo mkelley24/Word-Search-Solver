@@ -66,6 +66,9 @@ class Window():
         return self
     
     def __next__(self):
+        pass
+
+    def slide_window(self):
         next_point: Point = self.current_position.span(self.point_shift, self.size)
         if self.board.valid_point(next_point) == False:
             raise StopIteration

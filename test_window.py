@@ -1,6 +1,7 @@
 from typing import List
 from window import *
 from point import Point
+import pytest
 
 def compare_lists(letter_list, string_list):
         if len(letter_list) != len(string_list):
@@ -50,3 +51,6 @@ def test_window_iteration():
     my_iter.__next__()
     print(test_window.text)
     assert(test_window.compare_word_to_window("bcd"))
+
+def test_throws_small_exception():
+     pass

@@ -107,7 +107,21 @@ def test_slide_window_raises_exception():
     test_grid: WordGrid = WordGrid(test_lines)
     start: Point = Point(0, 0)
     test_window = Window(test_grid, 3, start, Direction.Horizontal)
+    print("Last Test:")
+    print(test_window.text)
     test_window.slide_window()
     test_window.slide_window()
+    print(test_window.text)
     with pytest.raises(StopIteration):
         test_window.slide_window()
+
+def test_str_method():
+    test_lines: List[str] = [
+        "abcde",
+        "fghij",
+        "klmno"
+    ]
+    test_grid: WordGrid = WordGrid(test_lines)
+    start: Point = Point(0, 0)
+    test_window = Window(test_grid, 3, start, Direction.Horizontal)
+    assert(test_window.__str__() == "[a, b, c]")

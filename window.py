@@ -51,10 +51,6 @@ class Window():
                 position.move_point(self.point_shift)
             return window_text
 
-    # @abstractmethod
-    # def slide_window(self):
-    #     pass
-
     def compare_word_to_window(self, plain_text: str) -> bool:
         if len(plain_text) != len(self.text):
             return False
@@ -80,12 +76,8 @@ class Window():
         pass
 
     def slide_window(self):
-        print("Slide_window:")
         next_point: Point = self.head.span(self.point_shift, self.size)
-        print(next_point)
-        print(self.board.valid_point(next_point))
         if self.board.valid_point(next_point) == False:
-            print("fail")
             raise StopIteration
         else:
             new_letter: Letter = self.board.get_letter(next_point)

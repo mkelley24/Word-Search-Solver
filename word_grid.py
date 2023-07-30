@@ -49,6 +49,16 @@ class WordGrid:
             horizontal_list.append(self._get_horizontal_line(i))
             i += 1
         return horizontal_list
+    
+    # def set_word_found(self, head: Point, directional_shift: Point, length: int):
+    #     if self.valid_point(head) == False:
+    #         raise ValueError
+    #     elif self.valid_point(head.span(directional_shift, length)) == False:
+    #         raise ValueError
+    #     else:
+    #         for _ in range(length):
+    #             pass
+
 
     def _get_vertical_line(self, j: int) -> str:
         '''

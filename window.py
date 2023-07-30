@@ -14,8 +14,11 @@ class Window():
     def __init__(self, board: WordGrid, size: int, start: Point, direction: Direction):
         self.size: int = size
         self.head: Point = start
-        self.point_shift: Point = Direction.get_shift_point(direction)
-        self.head_shift: Point = Direction.get_head_shift(direction)
+        try:
+            self.point_shift: Point = Direction.get_shift_point(direction)
+            self.head_shift: Point = Direction.get_head_shift(direction)
+        except ValueError:
+            raise ValueError
         self.current_position: Point = start
         self.board: WordGrid = board
         try:
@@ -24,11 +27,23 @@ class Window():
             raise WindowTooSmall
         self.hash_value: int = get_hash(self.text)
 
-    def _get_window_text(self) -> str:
+    def __str__(self):
+        output: str = "["
+        if len(self.text) > 0:
+            output += self.text[0].letter_value
+        i: int = 1
+        while i < len(self.text):
+            output += ", "
+            output += self.text[i].letter_value
+            i += 1
+        output += "]"
+        return output
+
+    def old_get_window_text(self) -> List[str]:
         counter = 0
         if self.board.valid_point(self.head) == False:
             raise WindowTooSmall
-        while self.board.valid_point(self.head.span(self.point_shift, self.size)) == False:
+        while self.board.valid_point(self.head.span(self.point_shift, self.size - 1)) == False:
             if self.board.valid_point(self.head + self.head_shift) == False:
                 raise WindowTooSmall
             else:
@@ -40,6 +55,20 @@ class Window():
             counter += 1
         return window_text
     
+    def _get_window_text(self) -> List[str]:
+        counter = 0
+        if self.board.valid_point(self.head) == False:
+            raise WindowTooSmall
+        elif self.board.valid_point(self.head.span(self.point_shift, self.size - 1)) == False:
+            raise WindowTooSmall
+        else:
+            window_text: List[Letter] = []
+            position: Point = self.head.copy_point()
+            for _ in range(self.size):
+                window_text.append(self.board.get_letter(position))
+                position.move_point(self.point_shift)
+            return window_text
+
     # @abstractmethod
     # def slide_window(self):
     #     pass
@@ -66,8 +95,15 @@ class Window():
         return self
     
     def __next__(self):
+        pass
+
+    def slide_window(self):
+        print("Slide_window:")
         next_point: Point = self.current_position.span(self.point_shift, self.size)
+        print(next_point)
+        print(self.board.valid_point(next_point))
         if self.board.valid_point(next_point) == False:
+            print("fail")
             raise StopIteration
         else:
             new_letter: Letter = self.board.get_letter(next_point)

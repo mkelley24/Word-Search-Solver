@@ -49,6 +49,9 @@ class Window():
                 window_text.append(self.board.get_letter(position))
                 position.move_point(self.point_shift)
             return window_text
+        
+    def check_word_list():
+        pass
 
     def compare_word_to_window(self, plain_text: str) -> bool:
         if len(plain_text) != len(self.text):

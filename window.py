@@ -16,10 +16,8 @@ class Window():
         self.head: Point = start
         try:
             self.point_shift: Point = Direction.get_shift_point(direction)
-            self.head_shift: Point = Direction.get_head_shift(direction)
         except ValueError:
             raise ValueError
-        self.current_position: Point = start
         self.board: WordGrid = board
         try:
             self.text: List[Letter] = self._get_window_text()
@@ -38,22 +36,6 @@ class Window():
             i += 1
         output += "]"
         return output
-
-    def old_get_window_text(self) -> List[str]:
-        counter = 0
-        if self.board.valid_point(self.head) == False:
-            raise WindowTooSmall
-        while self.board.valid_point(self.head.span(self.point_shift, self.size - 1)) == False:
-            if self.board.valid_point(self.head + self.head_shift) == False:
-                raise WindowTooSmall
-            else:
-                self.head_shift.move_point(self.head_shift)
-        window_text: List[Letter] = []
-        while self.board.valid_point(self.head) and counter < self.size:
-            window_text.append(self.board.get_letter(self.head))
-            self.head.move_point(self.point_shift)
-            counter += 1
-        return window_text
     
     def _get_window_text(self) -> List[str]:
         counter = 0
@@ -99,7 +81,7 @@ class Window():
 
     def slide_window(self):
         print("Slide_window:")
-        next_point: Point = self.current_position.span(self.point_shift, self.size)
+        next_point: Point = self.head.span(self.point_shift, self.size)
         print(next_point)
         print(self.board.valid_point(next_point))
         if self.board.valid_point(next_point) == False:
@@ -110,4 +92,4 @@ class Window():
             self.hash_value = rehash(self.hash_value, new_letter.letter_value, self.text[0].letter_value)
             self.text.pop(0)
             self.text.append(new_letter)
-            self.current_position = self.current_position + self.point_shift
+            self.head = self.head + self.point_shift

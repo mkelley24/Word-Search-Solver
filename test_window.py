@@ -2,6 +2,7 @@ from typing import List
 from window import *
 from point import Point
 import pytest
+from word_bank import WordBank
 
 def compare_lists(letter_list, string_list):
         if len(letter_list) != len(string_list):
@@ -20,7 +21,9 @@ def test_get_window_text():
     ]
     test_grid: WordGrid = WordGrid(test_lines)
     start: Point = Point(0, 0)
-    test_window: Window = Window(test_grid, 3, start, Direction.Horizontal)
+    test_list: List[str] = ["Python", "Rust", "Swift", "Java", "Code"]
+    bank = WordBank(test_list)
+    test_window: Window = Window(test_grid, 3, start, Direction.Horizontal, bank)
     assert(compare_lists(test_window.text, ["a", "b", "c"]))
 
 def test_compare_word_same():
@@ -31,26 +34,23 @@ def test_compare_word_same():
     ]
     test_grid: WordGrid = WordGrid(test_lines)
     start:Point = Point(0, 0)
-    test_window: Window = Window(test_grid, 3, start, Direction.Horizontal)
+    test_list: List[str] = ["Python", "Rust", "Swift", "Java", "Code"]
+    bank = WordBank(test_list)
+    test_window: Window = Window(test_grid, 3, start, Direction.Horizontal, bank)
     print(test_window.text)
     assert(test_window.compare_word_to_window("abc"))
 
-# def test_window_iteration():
-#     test_lines: List[List[str]] = [
-#         ["a", "b", "c", "d", "e", "x", "y", "z", "q"],
-#         ["f", "g", "h", "i", "j", "p", "q", "r", "w"],
-#         ["k", "l", "m", "n", "o", "s", "t", "u", "e"]
-#     ]
-#     test_grid: WordGrid = WordGrid(test_lines)
-#     start: Point = Point(0, 0)
-#     test_window: Window = Window(test_grid, 3, start, Direction.Horizontal)
-#     sample_point: Point = start.span(Point(1, 0), 4)
-#     print(repr(test_window.current_position))
-#     print(repr(sample_point))
-#     my_iter = test_window.__iter__()
-#     my_iter.__next__()
-#     print(test_window.text)
-#     assert(test_window.compare_word_to_window("bcd"))
+def test_window_iteration():
+    test_lines: List[str] = [
+        "abcde",
+        "fghij",
+        "klmno"
+    ]
+    test_grid: WordGrid = WordGrid(test_lines)
+    start: Point = Point(0, 0)
+    test_list: List[str] = ["Python", "Rust", "Swift", "Java", "Code"]
+    bank = WordBank(test_list)
+    # test_window: Window = Window
 
 def test_throws_small_exception_horizontal():
     test_lines: List[str] = [
@@ -60,8 +60,10 @@ def test_throws_small_exception_horizontal():
     ]
     test_grid: WordGrid = WordGrid(test_lines)
     start: Point = Point(0, 0)
+    test_list: List[str] = ["Python", "Rust", "Swift", "Java", "Code"]
+    bank = WordBank(test_list)
     with pytest.raises(WindowTooSmall):
-        test_window: Window = Window(test_grid, 6, start, Direction.Horizontal)
+        test_window: Window = Window(test_grid, 6, start, Direction.Horizontal, bank)
 
 def test_no_exception_horizontal():
     test_lines: List[str] = [
@@ -71,7 +73,9 @@ def test_no_exception_horizontal():
     ]
     test_grid: WordGrid = WordGrid(test_lines)
     start: Point = Point(0, 0)
-    test_window: Window = Window(test_grid, 5, start, Direction.Horizontal)
+    test_list: List[str] = ["Python", "Rust", "Swift", "Java", "Code"]
+    bank = WordBank(test_list)
+    test_window: Window = Window(test_grid, 5, start, Direction.Horizontal, bank)
     assert(True)
 
 def test_window_get_text():
@@ -82,7 +86,9 @@ def test_window_get_text():
     ]
     test_grid: WordGrid = WordGrid(test_lines)
     start: Point = Point(0, 0)
-    test_window: Window = Window(test_grid, 4, start, Direction.Horizontal)
+    test_list: List[str] = ["Python", "Rust", "Swift", "Java", "Code"]
+    bank = WordBank(test_list)
+    test_window: Window = Window(test_grid, 4, start, Direction.Horizontal, bank)
     print("New Test: ")
     print(test_window.text)
 
@@ -94,7 +100,9 @@ def test_one_slide_horizontal():
     ]
     test_grid: WordGrid = WordGrid(test_lines)
     start: Point = Point(0, 0)
-    test_window = Window(test_grid, 3, start, Direction.Horizontal)
+    test_list: List[str] = ["Python", "Rust", "Swift", "Java", "Code"]
+    bank = WordBank(test_list)
+    test_window = Window(test_grid, 3, start, Direction.Horizontal, bank)
     test_window.slide_window()
     assert(test_window.compare_word_to_window("bcd"))
 
@@ -106,7 +114,9 @@ def test_slide_window_raises_exception():
     ]
     test_grid: WordGrid = WordGrid(test_lines)
     start: Point = Point(0, 0)
-    test_window = Window(test_grid, 3, start, Direction.Horizontal)
+    test_list: List[str] = ["Python", "Rust", "Swift", "Java", "Code"]
+    bank = WordBank(test_list)
+    test_window = Window(test_grid, 3, start, Direction.Horizontal, bank)
     print("Last Test:")
     print(test_window.text)
     test_window.slide_window()
@@ -123,5 +133,7 @@ def test_str_method():
     ]
     test_grid: WordGrid = WordGrid(test_lines)
     start: Point = Point(0, 0)
-    test_window = Window(test_grid, 3, start, Direction.Horizontal)
+    test_list: List[str] = ["Python", "Rust", "Swift", "Java", "Code"]
+    bank = WordBank(test_list)
+    test_window = Window(test_grid, 3, start, Direction.Horizontal, bank)
     assert(test_window.__str__() == "[a, b, c]")

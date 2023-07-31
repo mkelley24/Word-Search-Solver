@@ -6,11 +6,12 @@ from typing import List
 from letter import Letter
 from custom_exceptions import WindowTooSmall
 from direction import Direction
+from word_bank import WordBank
 
 
 class Window():
 
-    def __init__(self, board: WordGrid, size: int, start: Point, direction: Direction):
+    def __init__(self, board: WordGrid, size: int, start: Point, direction: Direction, word_bank: WordBank):
         self.size: int = size
         self.head: Point = start
         try:
@@ -52,6 +53,7 @@ class Window():
         
     def check_word_list():
         pass
+        
 
     def compare_word_to_window(self, plain_text: str) -> bool:
         if len(plain_text) != len(self.text):
@@ -75,7 +77,15 @@ class Window():
         return self
     
     def __next__(self):
-        pass
+        next_point: Point = self.head.span(self.point_shift, self.size)
+        if self.board.valid_point(next_point) == False:
+            raise StopIteration
+        else:
+            new_letter: Letter = self.board.get_letter(next_point)
+            self.hash_value = rehash(self.hash_value, new_letter.letter_value, self.text[0].letter_value)
+            self.text.pop(0)
+            self.text.append(new_letter)
+            self.head = self.head + self.point_shift
 
     def slide_window(self):
         next_point: Point = self.head.span(self.point_shift, self.size)

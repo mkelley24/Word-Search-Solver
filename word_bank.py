@@ -13,3 +13,12 @@ class WordBank:
 
     def get_word_list(self, word_size: int) -> List[Word]:
         return self.word_dict[word_size]
+    
+    def __str__(self) -> str:
+        return str(self.word_dict)
+    
+    def get_key_list(self) -> List[int]:
+        return self.word_dict.keys()
+
+    def get_words_of_size(self, size: int) -> List[Word]:
+        return self.word_dict[size]

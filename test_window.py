@@ -50,7 +50,9 @@ def test_window_iteration():
     start: Point = Point(0, 0)
     test_list: List[str] = ["Python", "Rust", "Swift", "Java", "Code"]
     bank = WordBank(test_list)
-    # test_window: Window = Window
+    test_window: Window = Window(test_grid, 3, start, Direction.Horizontal, bank)
+    for _ in test_window:
+        print(test_window.text)
 
 def test_throws_small_exception_horizontal():
     test_lines: List[str] = [

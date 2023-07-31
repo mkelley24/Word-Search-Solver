@@ -10,4 +10,7 @@ class Letter:
         self.letter_value = True
 
     def __repr__(self):
-        return "Letter(letter_value= {}, word_section= {})".format(self.letter_value, self.word_section)
+        return "Letter({}, {})".format(self.letter_value, self.word_section)
+    
+    def __str__(self) -> str:
+        return "({}, {})".format(self.letter_value, self.word_section)

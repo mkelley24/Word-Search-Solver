@@ -7,6 +7,14 @@ class WordGrid:
     def __init__(self, word_lines: List[str]):
         self.grid: List[List[Letter]] = list(map(string_to_list, word_lines))
 
+    def __repr__(self):
+        output = "[\n"
+        for x in self.grid:
+            output += str(x)
+            output += "\n"
+        output += "]"
+        return output
+
 
     def display(self):
         for i in self.grid:

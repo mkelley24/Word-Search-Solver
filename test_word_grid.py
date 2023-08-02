@@ -65,6 +65,12 @@ def test_get_vertical_line_list():
     test_grid = WordGrid(test_input)
     assert(test_grid.get_vertical_line_list() == test_lines)
 
+def test_repr_method():
+    test_input = ["ABC", "DEF", "GHI"]
+    test_grid = WordGrid(test_input)
+    print("test")
+    print(test_grid)
+
 # def test_get_left_diagonal_line_list():
 #     test_input = ["ABC", "DEF", "GHI"]
 #     test_lines = ["AEI", "DH", "G", "BF", "I"]

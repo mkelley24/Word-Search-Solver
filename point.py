@@ -3,7 +3,7 @@ class Point:
         self.x: int = x
         self.y: int = y
 
-    def __repr__(self):
+    def __repr__(self) -> str:
         return "Point(x= {x_value}, y= {y_value})".format(x_value = self.x, y_value = self.y)
 
     def move_point(self, shift) -> None:
@@ -14,17 +14,17 @@ class Point:
         self.x = new_x
         self.y = new_y
 
-    def add_points(self, addend):
+    def add_points(self, addend) -> object:
         return Point(self.x + addend.x, self.y + addend.y)
     
-    def scale_point(self, scalar):
+    def scale_point(self, scalar) -> object:
         return Point(self.x * scalar, self.y * scalar)
     
-    def span(self, point_shift, length: int):
+    def span(self, point_shift, length: int) -> object:
         new_shift: Point = point_shift.scale_point(length)
         return self + new_shift
     
-    def __add__(self, addend):
+    def __add__(self, addend) -> object:
         return Point(self.x + addend.x, self.y + addend.y)
     
     def is_equal(self, other) -> bool:
@@ -43,5 +43,5 @@ class Point:
         else:
             return True
         
-    def copy_point(self):
+    def copy_point(self) -> object:
         return Point(self.x, self.y)

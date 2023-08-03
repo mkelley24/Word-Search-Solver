@@ -1,6 +1,5 @@
 from typing import List
-from rk_hash import get_hash
-
+from rk_hash import *
 
 class Word:
 
@@ -11,8 +10,8 @@ class Word:
         self.is_found: bool = False
         self.length: int = len(self.text)
         self.rev_text: str = self.reverse_string(self.text)
-        self.front_hash: int = get_hash(self.text)
-        self.rev_hash: int = get_hash(self.rev_text)
+        self.front_hash: int = get_hash_string(self.text)
+        self.rev_hash: int = get_hash_string(self.rev_text)
 
     def is_equal(self, window_text: str) -> bool:
         if self.text == window_text or self.rev_text == window_text:

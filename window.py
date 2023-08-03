@@ -1,6 +1,6 @@
 from word_grid import WordGrid
 from point import Point
-from rk_hash import get_hash, rehash
+from rk_hash import *
 from word import Word
 from typing import List
 from letter import Letter
@@ -23,7 +23,7 @@ class Window():
             self.text: List[Letter] = self._get_window_text()
         except WindowTooSmall:
             raise WindowTooSmall
-        self.hash_value: int = get_hash(self.text)
+        self.hash_value: int = get_hash_letter_list(self.text)
 
     def __str__(self):
         output: str = "["
@@ -51,7 +51,7 @@ class Window():
                 position.move_point(self.point_shift)
             return window_text
         
-    def check_word_list():
+    def check_word_list(self):
         pass
         
 

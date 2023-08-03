@@ -28,6 +28,6 @@ class Letter:
     
     def generate_label(self, root: Tk) -> Label:
         if self.word_section == True:
-            return Label(root, text= self.letter_value, fg= 'green', bg= 'gray', width=2, height= 2)
+            return Label(root, text= self.letter_value, fg= 'green', bg= 'gray', width=1, height= 1)
         else:
-            return Label(root, text= self.letter_value, fg= 'red', bg= 'white', width=2, height= 2)
+            return Label(root, text= self.letter_value, fg= 'red', bg= 'white', width=1, height= 1)

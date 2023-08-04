@@ -15,7 +15,8 @@ def letter_calculation(hash: int, letter: str):
 
 def get_hash_string(input: str) -> int:
     hash: int = 0
-    for letter in input:
+    for i in range(len(input)):
+        letter: str = input[i]
         hash = letter_calculation(hash, letter)
     return hash
 

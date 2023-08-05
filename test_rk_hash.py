@@ -66,3 +66,12 @@ def test_word_hash():
 def test_reverse_word_hash():
     test_word: Word = Word("RUST")
     assert(test_word.rev_hash == 68)
+
+def test_rehash():
+    string_a: str = "ABCD"
+    string_b: str = "BCDE"
+    hash_a: int = get_hash_string(string_a)
+    hash_b: int = get_hash_string(string_b)
+    hash_scale: int = get_hash_scale(4)
+    hash_c: int = rehash(hash_a, 'E', 'A', hash_scale)
+    assert(hash_b == hash_c)

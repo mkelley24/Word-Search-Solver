@@ -26,10 +26,13 @@ def get_hash_scale(length: int) -> int:
     return ALPHABET_SIZE ** (length - 1)
 
 
-def rehash(hash: int, new_char: str, old_char: str) -> int:
-    shifted_hash: int = 0
-    back_hash: int = 0
-    return hash
+def rehash(old_hash: int, new_char: str, old_char: str, hash_scale: int) -> int:
+    ALPHABET_SIZE: int = 26
+    PRIME: int = 97
+    old_hash -= letter_to_number(old_char[0]) * hash_scale
+    old_hash *= ALPHABET_SIZE
+    old_hash += letter_to_number(new_char[0])
+    return old_hash % PRIME
 
 def letter_to_number(char: str) -> int:
     ASCII_DIFFERENCE: int = 65

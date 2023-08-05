@@ -24,6 +24,7 @@ class Window():
         except WindowTooSmall:
             raise WindowTooSmall
         self.hash_value: int = get_hash_letter_list(self.text)
+        self.hash_scale = get_hash_scale(self.size)
 
     def __str__(self):
         output: str = "["
@@ -82,7 +83,7 @@ class Window():
             raise StopIteration
         else:
             new_letter: Letter = self.board.get_letter(next_point)
-            self.hash_value = rehash(self.hash_value, new_letter.letter_value, self.text[0].letter_value)
+            self.hash_value = rehash(self.hash_value, new_letter.letter_value, self.text[0].letter_value, self.hash_scale)
             self.text.pop(0)
             self.text.append(new_letter)
             self.head = self.head + self.point_shift
@@ -93,7 +94,7 @@ class Window():
             raise StopIteration
         else:
             new_letter: Letter = self.board.get_letter(next_point)
-            self.hash_value = rehash(self.hash_value, new_letter.letter_value, self.text[0].letter_value)
+            self.hash_value = rehash(self.hash_value, new_letter.letter_value, self.text[0].letter_value, self.hash_scale)
             self.text.pop(0)
             self.text.append(new_letter)
             self.head = self.head + self.point_shift

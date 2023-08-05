@@ -24,7 +24,7 @@ def test_get_window_text():
     test_list: List[str] = ["Python", "Rust", "Swift", "Java", "Code"]
     bank = WordBank(test_list)
     test_window: Window = Window(test_grid, 3, start, Direction.Horizontal, bank)
-    assert(compare_lists(test_window.text, ["a", "b", "c"]))
+    assert(compare_lists(test_window.text, ["A", "B", "C"]))
 
 def test_compare_word_same():
     test_lines: List[str] = [
@@ -38,7 +38,7 @@ def test_compare_word_same():
     bank = WordBank(test_list)
     test_window: Window = Window(test_grid, 3, start, Direction.Horizontal, bank)
     print(test_window.text)
-    assert(test_window.compare_word_to_window("abc"))
+    assert(test_window.compare_word_to_window("ABC"))
 
 def test_window_iteration():
     test_lines: List[str] = [
@@ -106,7 +106,7 @@ def test_one_slide_horizontal():
     bank = WordBank(test_list)
     test_window = Window(test_grid, 3, start, Direction.Horizontal, bank)
     test_window.slide_window()
-    assert(test_window.compare_word_to_window("bcd"))
+    assert(test_window.compare_word_to_window("BCD"))
 
 def test_slide_window_raises_exception():
     test_lines: List[str] = [
@@ -138,4 +138,4 @@ def test_str_method():
     test_list: List[str] = ["Python", "Rust", "Swift", "Java", "Code"]
     bank = WordBank(test_list)
     test_window = Window(test_grid, 3, start, Direction.Horizontal, bank)
-    assert(test_window.__str__() == "[a, b, c]")
+    assert(test_window.__str__() == "[A, B, C]")

@@ -14,11 +14,20 @@ class Letter:
     def __repr__(self):
         return "Letter({}, {})".format(self.letter_value, self.word_section)
     
+    #short repr for testing
+    def __repr__(self):
+        shortened_bool: str = ""
+        if self.word_section:
+            shortened_bool = "T"
+        else:
+            shortened_bool = "F"
+        return "({}, {})".format(self.letter_value, shortened_bool)
+    
     def __str__(self) -> str:
         return "({}, {})".format(self.letter_value, self.word_section)
     
     def generate_label(self, root: Tk) -> Label:
         if self.word_section == True:
-            return Label(root, text= self.letter_value, fg= 'green', bg= 'gray', width=2, height= 2)
+            return Label(root, text= self.letter_value, fg= 'green', bg= 'gray', width=1, height= 1)
         else:
-            return Label(root, text= self.letter_value, fg= 'red', bg= 'white', width=2, height= 2)
+            return Label(root, text= self.letter_value, fg= 'red', bg= 'white', width=1, height= 1)

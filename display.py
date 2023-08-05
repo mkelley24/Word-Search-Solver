@@ -6,13 +6,18 @@ from letter import Letter
 
 root = tk.Tk()
 
-canvas = tk.Canvas(root, width=600, height=300)
-canvas.grid(columnspan=4, rowspan=4)
+canvas = tk.Canvas(root, width=1200, height=600)
+canvas.grid(columnspan=20, rowspan=20)
 
 def open_file():
     file = askopenfile(parent=root, mode='rb', title="Choose a file", filetype=[("Text file", "*.txt")])
+    found_semicolon: bool = False
     if file:
         pass
+    for line in file.readlines():
+        if line == ";":
+            found_semicolon = True
+            break
 
 def generate_label(letter: Letter) -> Label:
     if letter.word_section:
@@ -30,6 +35,12 @@ test_lines = [
     ['i', 'j', 'k', 'l']
 ]
 test_grid = WordGrid(test_lines)
-
+i: int = 4
+for row in test_grid.get_grid():
+    j: int = 4
+    for letter in row:
+        letter.generate_label(root).grid(column=j, row=i)
+        j += 1
+    i += 1
 
 root.mainloop()

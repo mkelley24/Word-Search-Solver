@@ -20,10 +20,10 @@ class Word:
             return False
         
     def __repr__(self) -> str:
-        return "Word(\"{}\")".format(self.text)
+        return "Word(\"{}\", {})".format(self.text, self.is_found)
     
     def __str__(self) -> str:
-        return self.text
+        return "Word(\"{}\", {})".format(self.text, self.is_found)
     
     def reverse_string(self, text: str) -> str:
         output: str = ""

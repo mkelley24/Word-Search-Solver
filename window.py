@@ -25,6 +25,7 @@ class Window():
             raise WindowTooSmall
         self.hash_value: int = get_hash_letter_list(self.text)
         self.hash_scale = get_hash_scale(self.size)
+        self.word_list: List[Word] = word_bank.get_words_of_size(self.size)
 
     def __str__(self):
         output: str = "["
@@ -64,7 +65,7 @@ class Window():
                 return False
         return True
 
-    def compare_hash_to_window(self, word: Word):
+    def compare_hash_to_window(self, word: Word) -> None:
         word_present: bool = False
         if word.front_hash == self.hash_value:
             word_present = self.compare_word_to_window(word.text)
@@ -72,7 +73,10 @@ class Window():
             word_present = self.compare_word_to_window(word.rev_text)
         else:
             pass
-        word.isFound = word_present
+        if word_present == True:
+            word.is_found = True
+        else:
+            return
 
     def __iter__(self):
         return self

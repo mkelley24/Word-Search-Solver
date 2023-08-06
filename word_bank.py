@@ -22,3 +22,12 @@ class WordBank:
 
     def get_words_of_size(self, size: int) -> List[Word]:
         return self.word_dict[size]
+    
+    def get_word(self, word_string: str) -> Word:
+        word_string.upper()
+        if word_string.isupper() == False:
+            raise ValueError
+        my_list = self.get_words_of_size(len(word_string))
+        for word in my_list:
+            if word.text == word_string:
+                return word

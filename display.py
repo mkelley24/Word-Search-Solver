@@ -30,9 +30,9 @@ word_search_btn = tk.Button(root, textvariable=word_search_btn_text, command=lam
 word_search_btn_text.set("Select Word Puzzle")
 word_search_btn.grid(column=1, row=2)
 test_lines = [
-    ['a', 'b', 'c', 'd'],
-    ['e', 'f', 'g', 'h'],
-    ['i', 'j', 'k', 'l']
+    "ABCD",
+    "EFGH",
+    "IJKL"
 ]
 test_grid = WordGrid(test_lines)
 i: int = 4

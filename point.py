@@ -6,7 +6,7 @@ class Point:
     def __repr__(self) -> str:
         return "Point(x= {x_value}, y= {y_value})".format(x_value = self.x, y_value = self.y)
 
-    def move_point(self, shift) -> None:
+    def move_point(self, shift: object) -> None:
         self.x += shift.x
         self.y += shift.y
 
@@ -14,7 +14,7 @@ class Point:
         self.x = new_x
         self.y = new_y
 
-    def add_points(self, addend) -> object:
+    def add_points(self, addend: object) -> object:
         return Point(self.x + addend.x, self.y + addend.y)
     
     def scale_point(self, scalar) -> object:

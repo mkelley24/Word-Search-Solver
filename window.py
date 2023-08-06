@@ -25,6 +25,8 @@ class Window():
             raise WindowTooSmall
         self.hash_value: int = get_hash_letter_list(self.text)
         self.hash_scale = get_hash_scale(self.size)
+        self.word_list: List[Word] = word_bank.get_words_of_size(self.size)
+        self.check_word_list()
 
     def __str__(self):
         output: str = "["
@@ -52,8 +54,9 @@ class Window():
                 position.move_point(self.point_shift)
             return window_text
         
-    def check_word_list(self):
-        pass
+    def mark_view_as_found(self):
+        for letter in self.text:
+            letter.set_found()
         
 
     def compare_word_to_window(self, plain_text: str) -> bool:
@@ -64,7 +67,7 @@ class Window():
                 return False
         return True
 
-    def compare_hash_to_window(self, word: Word):
+    def compare_hash_to_window(self, word: Word) -> None:
         word_present: bool = False
         if word.front_hash == self.hash_value:
             word_present = self.compare_word_to_window(word.text)
@@ -72,7 +75,15 @@ class Window():
             word_present = self.compare_word_to_window(word.rev_text)
         else:
             pass
-        word.isFound = word_present
+        if word_present == True:
+            word.found()
+            self.mark_view_as_found()
+        else:
+            return
+    
+    def check_word_list(self) -> None:
+        for word in self.word_list:
+            self.compare_hash_to_window(word)
 
     def __iter__(self):
         return self
@@ -87,6 +98,7 @@ class Window():
             self.text.pop(0)
             self.text.append(new_letter)
             self.head = self.head + self.point_shift
+            self.check_word_list()
 
     def slide_window(self):
         next_point: Point = self.head.span(self.point_shift, self.size)
@@ -98,3 +110,4 @@ class Window():
             self.text.pop(0)
             self.text.append(new_letter)
             self.head = self.head + self.point_shift
+            self.check_word_list()

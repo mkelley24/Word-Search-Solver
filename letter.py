@@ -9,7 +9,7 @@ class Letter:
         self.word_section = False
 
     def set_found(self) -> None:
-        self.letter_value = True
+        self.word_section = True
 
     def __repr__(self):
         return "Letter({}, {})".format(self.letter_value, self.word_section)

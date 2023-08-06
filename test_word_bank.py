@@ -16,3 +16,8 @@ def test_sizes_list():
     test_list: List[str] = ["Python", "Rust", "Swift", "Java", "Code", "pycharm"]
     bank = WordBank(test_list)
     print(bank.get_words_of_size(4))
+
+def test_get_word():
+    test_list: List[str] = ["Python", "Rust", "Swift", "Java", "Code", "pycharm"]
+    bank = WordBank(test_list)
+    print(bank.get_word("JAVA"))

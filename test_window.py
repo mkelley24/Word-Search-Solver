@@ -164,9 +164,45 @@ def test_search_window_finds_java():
         "MXVQCXESQNDRJSRTFETL"
     ]
     test_grid: WordGrid = WordGrid(test_lines)
-    start: Point(0, 2)
+    start: Point = Point(0, 2)
     test_list: List[str] = ["CSHARP", "JAVA", "VSCODE", "SWIFT", "REACT", "ANGULAR", "RUST", "PYTHON"]
     bank: WordBank = WordBank(test_list)
     test_window = Window(test_grid, 4, start, Direction.Horizontal, bank)
     test_window.check_word_list()
-    assert()
+    for _ in test_window:
+        pass
+    assert(bank.get_word("JAVA").is_found == True)
+
+def test_search_window_marks_grid():
+    test_lines: List[str] = [
+        "BBDEHEYNVCPPGXSIDOGF",
+        "JDKAFRXQFGKRDCYVVHVU",
+        "ETSDQDKJAVASHMBWXETY",
+        "MZHKJSUBCSHARPEGWMNP",
+        "HBGFPGCGWCCJJQEGCQJB",
+        "EPBFQSVSCOZQTKWVWFNK",
+        "EPEGPHLURDUZUUJHYLZD",
+        "IDDAAHKOVERDDEVXVGEE",
+        "MBJCRGSLQIDXLFEYTGNK",
+        "IWNKEZNWQWXRKTRGDTRP",
+        "DZGFPYTHONDPIINVAXSX",
+        "ZEOSKPXFSFJRPVUXPQXP",
+        "NAYGCLAGFXTORUSTEGZZ",
+        "PZSHWYHASJTIOALSDHOX",
+        "TDTOGVZTCAERPELEDLPX",
+        "ZKJZABWVXEFLXMWUBJGN",
+        "ZAECAQPXQOKHSDTXGSGE",
+        "RVOPMQZLAURPJHGJCNAL",
+        "QTJTFEXKDJTXYDVCVVAB",
+        "MXVQCXESQNDRJSRTFETL"
+    ]
+    test_grid: WordGrid = WordGrid(test_lines)
+    start: Point = Point(0, 2)
+    test_list: List[str] = ["CSHARP", "JAVA", "VSCODE", "SWIFT", "REACT", "ANGULAR", "RUST", "PYTHON"]
+    bank: WordBank = WordBank(test_list)
+    test_window = Window(test_grid, 4, start, Direction.Horizontal, bank)
+    test_window.check_word_list()
+    for _ in test_window:
+        pass
+    java_locations: List[Point] = [Point(7, 2), Point(8, 2), Point(9, 2), Point(10, 2)]
+    print(test_grid.display_found_letters())

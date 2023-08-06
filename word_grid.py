@@ -58,6 +58,17 @@ class WordGrid:
             i += 1
         return horizontal_list
     
+    def display_found_letters(self) -> str:
+        display_string: str = ""
+        for row in self.grid:
+            display_string += '\n'
+            for value in row:
+                if value.word_section == True:
+                    display_string += value.letter_value
+                else:
+                    display_string += '_'
+        return display_string
+    
     # def set_word_found(self, head: Point, directional_shift: Point, length: int):
     #     if self.valid_point(head) == False:
     #         raise ValueError

@@ -47,3 +47,9 @@ def test_copy_separate_from_base():
     point_b: Point = point_a.copy_point()
     point_b.move_point(Point(2, 3))
     assert(point_a == Point(3, 1))
+
+# def test_method_without_dot_operator():
+#     point_a: Point = Point(3, 1)
+#     point_b: Point = point_a.copy_point()
+#     Point.move_point(point_b, Point(2, 3))
+#     assert(point_a == Point(3, 1))

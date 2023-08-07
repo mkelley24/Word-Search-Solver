@@ -1,6 +1,7 @@
 from typing import List
 from point import Point
 from letter import Letter
+from tkinter import *
 
 # stub for testing
 class WordGrid:
@@ -18,7 +19,15 @@ class WordGrid:
             output += "\n"
         output += "]"
         return output
-
+    
+    def label_list(self, root: Tk) -> List[List[Label]]:
+        label_grid: List[List[Label]] = []
+        for row in self.grid:
+            label_row: List[Label] = []
+            for letter in row:
+                label_row.append(letter.generate_label(root))
+            label_grid.append(label_row)
+        return label_grid
 
     def display(self):
         for i in self.grid:

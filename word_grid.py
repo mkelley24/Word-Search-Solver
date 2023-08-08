@@ -6,7 +6,10 @@ from tkinter import *
 # stub for testing
 class WordGrid:
     def __init__(self, word_lines: List[str]):
-        self.grid: List[List[Letter]] = list(map(string_to_list, word_lines))
+        try:
+            self.grid: List[List[Letter]] = list(map(string_to_list, word_lines))
+        except ValueError:
+            raise ValueError
         row_length: int = len(self.grid[0])
         for row in self.grid:
             if row_length != len(row):

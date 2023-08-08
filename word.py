@@ -5,7 +5,7 @@ class Word:
 
     def __init__(self, new_word: str):
         self.text: str = new_word.upper()
-        if self.text.isupper() == False:
+        if self.text.isalpha() == False:
             raise ValueError
         self.is_found: bool = False
         self.length: int = len(self.text)

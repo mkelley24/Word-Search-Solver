@@ -15,24 +15,22 @@ canvas.grid(columnspan=30, rowspan=30)
 def open_file():
     STARTING_ROW: int = 1
     STARTING_COL: int = 0
-    file = askopenfile(parent=root, mode='rb', title="Choose a file", filetype=[("Text file", "*.txt")])
+    file = askopenfile(parent=root, mode='r', title="Choose a file", filetype=[("Text file", "*.txt")])
     found_semicolon: bool = False
     letter_lines: List[str] = []
-    word_list: List[str] = []
+    input_lines: List[str] = []
+    word_bank_line: str = ""
+    divider: int = 0
     if file:
         for line in file.readlines():
-            if line == "#":
-                found_semicolon = True
-                break
-            elif found_semicolon == True:
-                word_list.append(str(line))
-            else:
-                letter_lines.append(str(line))
-        # if len(word_list) != 1:
-        #     print(word_list)
-        #     raise ValueError
+            input_lines.append(line[:len(line) - 1])
+        if input_lines[-2][0] != "#":
+            raise ValueError
+        else:
+            word_bank_line = input_lines[-1]
+            letter_lines = input_lines[:len(input_lines) - 2]
         puzzle_board: WordGrid = WordGrid(letter_lines)
-        word_bank: WordBank = WordBank(word_list[0].split(" "))
+        word_bank: WordBank = WordBank(word_bank_line.split(" "))
         search_for_words(puzzle_board, word_bank)
         label_grid: List[List[Label]] = puzzle_board.label_list(root)
         x: int = STARTING_COL
@@ -41,12 +39,14 @@ def open_file():
             for label in row:
                 label.grid(row=y, column=x)
                 x += 1
+            x = STARTING_COL
             y += 1
+            print(word_bank)
 
 def test_file():
     STARTING_ROW: int = 1
     STARTING_COL: int = 0
-    file = askopenfile(parent=root, mode='rb', title="Choose a file", filetype=[("Text file", "*.txt")])
+    file = askopenfile(parent=root, mode='r', title="Choose a file", filetype=[("Text file", "*.txt")])
     found_semicolon: bool = False
     letter_lines: List[str] = []
     word_list: List[str] = []
@@ -71,7 +71,9 @@ def test_file():
         for row in label_grid:
             for label in row:
                 label.grid(row=y, column=x)
+                print("({}, {})".format(x, y))
                 x += 1
+            x = STARTING_COL
             y += 1
 
 

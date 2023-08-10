@@ -23,7 +23,7 @@ def search_direction(board: WordGrid, bank: WordBank, size: int, direction: Dire
     while board.valid_point(head):
         try:
             search_line(board, bank, size, direction, head)
-            print("{}: {}: {}".format(size, head, direction))
+            # print("{}: {}: {}".format(size, head, direction))
         except WindowTooSmall:
             head.move_point(head_shift)
             continue

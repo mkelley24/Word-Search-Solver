@@ -25,6 +25,37 @@ def open_file():
                 found_semicolon = True
                 break
             elif found_semicolon == True:
+                word_list.append(str(line))
+            else:
+                letter_lines.append(str(line))
+        # if len(word_list) != 1:
+        #     print(word_list)
+        #     raise ValueError
+        puzzle_board: WordGrid = WordGrid(letter_lines)
+        word_bank: WordBank = WordBank(word_list[0].split(" "))
+        search_for_words(puzzle_board, word_bank)
+        label_grid: List[List[Label]] = puzzle_board.label_list(root)
+        x: int = STARTING_COL
+        y: int = STARTING_ROW
+        for row in label_grid:
+            for label in row:
+                label.grid(row=y, column=x)
+                x += 1
+            y += 1
+
+def test_file():
+    STARTING_ROW: int = 1
+    STARTING_COL: int = 0
+    file = askopenfile(parent=root, mode='rb', title="Choose a file", filetype=[("Text file", "*.txt")])
+    found_semicolon: bool = False
+    letter_lines: List[str] = []
+    word_list: List[str] = []
+    if file:
+        for line in file.readlines():
+            if line == "#":
+                found_semicolon = True
+                break
+            elif found_semicolon == True:
                 word_list.append(line)
             else:
                 letter_lines.append(line)

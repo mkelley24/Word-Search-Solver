@@ -3,9 +3,9 @@ from tkinter import *
 class Letter:
 
     def __init__(self, letter_input: str) -> None:
-        if letter_input.isalpha() == False:
-            raise ValueError
-        self.letter_value: str = letter_input.upper()
+        # if letter_input[0].isalpha() == False:
+        #     raise ValueError
+        self.letter_value: str = letter_input[0].upper()
         self.word_section = False
 
     def set_found(self) -> None:

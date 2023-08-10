@@ -10,10 +10,10 @@ class WordGrid:
             self.grid: List[List[Letter]] = list(map(string_to_list, word_lines))
         except ValueError:
             raise ValueError
-        row_length: int = len(self.grid[0])
-        for row in self.grid:
-            if row_length != len(row):
-                raise ValueError
+        # row_length: int = len(self.grid[0])
+        # for row in self.grid:
+        #     if row_length != len(row):
+        #         raise ValueError
 
     def __repr__(self):
         output = "[\n"

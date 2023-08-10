@@ -13,8 +13,8 @@ canvas = tk.Canvas(root, width=1200, height=600)
 canvas.grid(columnspan=30, rowspan=30)
 
 def open_file():
-    STARTING_ROW: int = 1
-    STARTING_COL: int = 0
+    STARTING_ROW: int = 4
+    STARTING_COL: int = 4
     file = askopenfile(parent=root, mode='r', title="Choose a file", filetype=[("Text file", "*.txt")])
     found_semicolon: bool = False
     letter_lines: List[str] = []
@@ -23,7 +23,10 @@ def open_file():
     divider: int = 0
     if file:
         for line in file.readlines():
-            input_lines.append(line[:len(line) - 1])
+            if line[-1] == '\n':
+                input_lines.append(line[:len(line) - 1])
+            else:
+                input_lines.append(line)
         if input_lines[-2][0] != "#":
             raise ValueError
         else:
@@ -41,7 +44,6 @@ def open_file():
                 x += 1
             x = STARTING_COL
             y += 1
-            print(word_bank)
 
 def test_file():
     STARTING_ROW: int = 1

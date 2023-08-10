@@ -3,9 +3,9 @@ from tkinter import *
 class Letter:
 
     def __init__(self, letter_input: str) -> None:
-        if letter_input.isalpha() == False:
+        if letter_input[0].isalpha() == False:
             raise ValueError
-        self.letter_value: str = letter_input.upper()
+        self.letter_value: str = letter_input[0].upper()
         self.word_section = False
 
     def set_found(self) -> None:
@@ -28,6 +28,6 @@ class Letter:
     
     def generate_label(self, root: Tk) -> Label:
         if self.word_section == True:
-            return Label(root, text= self.letter_value, fg= 'green', bg= 'gray', width=1, height= 1)
+            return Label(root, text= self.letter_value, fg= 'green', bg= 'powderblue', width=1, height= 1)
         else:
             return Label(root, text= self.letter_value, fg= 'red', bg= 'white', width=1, height= 1)

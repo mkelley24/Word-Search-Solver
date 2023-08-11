@@ -44,8 +44,6 @@ def open_file():
                 x += 1
             x = STARTING_COL
             y += 1
-
-
     
 
 word_search_btn_text = tk.StringVar()

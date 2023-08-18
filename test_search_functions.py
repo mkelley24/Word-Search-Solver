@@ -39,7 +39,7 @@ def test_overall_search_on_grid():
     bank: WordBank = WordBank(test_list)
     test_window = Window(test_grid, 4, start, Direction.Horizontal, bank)
     search_for_words(test_grid, bank)
-    print(test_grid.display_found_letters())
+    # print(test_grid.display_found_letters())
 
 def test_directional_search():
     test_lines: List[str] = [
@@ -69,4 +69,4 @@ def test_directional_search():
     test_list: List[str] = ["CSHARP", "JAVA", "VSCODE", "SWIFT", "REACT", "ANGULAR", "RUST", "PYTHON", "GUI"]
     bank: WordBank = WordBank(test_list)
     search_for_words(test_grid, bank)
-    print(test_grid.display_found_letters())
+    # print(test_grid.display_found_letters())

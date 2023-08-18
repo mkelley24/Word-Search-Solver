@@ -94,52 +94,6 @@ class WordGrid:
     #         for _ in range(length):
     #             pass
 
-
-    def _get_vertical_line(self, j: int) -> str:
-        '''
-        :param j: the index of the column
-        :return: a line of text from the indicated column
-        '''
-        line: str = ""
-        i: int = 0
-        while i < len(self.grid[0]):
-            line += self.grid[i][j].letter_value
-            i += 1
-        return line
-
-    def get_vertical_line_list(self) -> List[str]:
-        '''
-        :return: a list of vertical lines of text
-        '''
-        j: int = 0
-        vertical_list: List[str] = []
-        while j < len(self.grid[0]):
-            vertical_list.append(self._get_vertical_line(j))
-            j += 1
-        return vertical_list
-
-    def _get_left_diagonal_line(self, i: int, j: int) -> str:
-        '''
-        :param i: the starting row index
-        :param j: the starting column index
-        :return: the line of text of the diagonal corresponding to the indices
-        '''
-        line: str = ""
-        while i < len(self.grid) and j < len(self.grid[0]):
-            line += self.grid[i][j].letter_value
-            i += 1
-            j += 1
-        return line
-
-    def get_left_diagonal_line_list(self) -> List[str]:
-        left_diagonal_line_list: List[str] = []
-        i: int = 0
-        j: int = 0
-        left_diagonal_line_list.append(self._get_left_diagonal_line(0, 0))
-        while i < len(self.grid) or j < len(self.grid[0]):
-            left_diagonal_line_list.append(self._get_left_diagonal_line(i, 0))
-            left_diagonal_line_list.append(self._get_left_diagonal_line(0, i))
-        return left_diagonal_line_list
 # helper function
 def string_to_list(line: str) -> List[Letter]:
     letter_list: List[Letter] = []

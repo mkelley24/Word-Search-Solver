@@ -9,8 +9,8 @@ from search_functions import *
 
 root = tk.Tk()
 
-canvas = tk.Canvas(root, width=1200, height=600)
-canvas.grid(columnspan=30, rowspan=30)
+# canvas = tk.Canvas(root, width=1200, height=600)
+# canvas.grid(columnspan=30, rowspan=30)
 
 def open_file():
     STARTING_ROW: int = 4
@@ -49,6 +49,7 @@ def open_file():
 word_search_btn_text = tk.StringVar()
 word_search_btn = tk.Button(root, textvariable=word_search_btn_text, command=lambda:open_file())
 word_search_btn_text.set("Select Word Puzzle")
-word_search_btn.grid(column=0, row=0)
+word_search_btn.pack()
+# word_search_btn.grid(column=0, row=0)
 
 root.mainloop()

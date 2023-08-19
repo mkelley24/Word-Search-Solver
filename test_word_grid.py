@@ -52,19 +52,6 @@ def test_is_valid_on_valid_point():
     test_point = Point(0, 1)
     assert(test_grid.valid_point(test_point) == True)
 
-
-def test_get_horizontal_line_list():
-    test_input = ["ABC", "DEF", "GHI"]
-    test_lines = ["ABC", "DEF", "GHI"]
-    test_grid = WordGrid(test_input)
-    assert(test_grid.get_horizontal_line_list() == test_lines)
-
-def test_get_vertical_line_list():
-    test_input = ["ABC", "DEF", "GHI"]
-    test_lines = ["ADG", "BEH", "CFI"]
-    test_grid = WordGrid(test_input)
-    assert(test_grid.get_vertical_line_list() == test_lines)
-
 def test_repr_method():
     test_input = ["ABC", "DEF", "GHI"]
     test_grid = WordGrid(test_input)

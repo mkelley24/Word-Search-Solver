@@ -1,5 +1,5 @@
-from point import Point
-from word_grid import WordGrid
+from .. point import Point
+from  .. word_grid import WordGrid
 from typing import List
 
 def test_point_add_no_dot():

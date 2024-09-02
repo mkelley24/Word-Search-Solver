@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, "../src")
 from point import Point
 from word_grid import WordGrid
 from typing import List

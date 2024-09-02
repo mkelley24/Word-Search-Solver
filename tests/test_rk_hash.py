@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, "../src")
 from rk_hash import *
 from word_bank import WordBank
 from point import Point

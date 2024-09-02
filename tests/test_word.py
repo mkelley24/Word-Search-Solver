@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, "../src")
 from word import Word
 
 def test_word_constructor():

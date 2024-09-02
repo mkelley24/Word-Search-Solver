@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, "../src")
 from direction import Direction
 from point import Point
 

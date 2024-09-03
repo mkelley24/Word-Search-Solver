@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, "../src")
 from word_bank import WordBank
 from typing import List
 

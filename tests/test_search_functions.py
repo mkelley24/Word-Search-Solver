@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, "../src")
 from window import Window
 from word import Word
 from word_grid import WordGrid

@@ -1,3 +1,5 @@
+import sys
+sys.path.insert(0, "../src")
 from typing import List
 from window import *
 from point import Point

@@ -12,7 +12,7 @@ Given that we will need to move across the grid in different directions I used t
 ### Display:
 When I started this project I wanted the display of the solution to show the letter grid with the letters being green if they were part of a found word and red if they were not, but I ran into the problem of trying to color different parts of a line as I was originally planning on having every row be a label in tkinter. I the realized I could make each letter be its own label so I could color it acording to its presence in a word. So I created the letter object which stored the string of the letter it contained and a boolean of whether it was found in a word. The letter has two main methods, one that would set its found boolean to true if it was found as part of a word, and a second method which would generate a label of the letter which colored it red if its found boolean was False and green if its found boolean was true.
 ## Usage:
-* Clone the repository
-* Go into the repository then the src folder and run the solver_app.py
-* Click the "Select Word Puzzle" button
-* Select your desired word search puzzle from the file dialog
+In order to simplify the running of the program, I created an executable of the project. To run it simply download the `.exe` file named `solver_app.exe`.
+## Demo:
+* after starting the program, a window will open asking you to select a word search text file
+  ![opening file screen](images/example.png)

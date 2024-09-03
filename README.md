@@ -14,9 +14,9 @@ When I started this project I wanted the display of the solution to show the let
 ## Usage:
 In order to simplify the running of the program, I created an executable of the project. To run it simply download the `.exe` file named `solver_app.exe`.
 ## Demo:
-* after starting the program, a window will open asking you to select a word search text file\
+* After starting the program, a window will open asking you to select a word search text file\
 ![opening file screen](images/file_selector.png)
-* after clicking the button, the file dialog screen will open to allow you to choose a file\
+* After clicking the button, the file dialog screen will open to allow you to choose a file\
 ![picking a file screen](images/file_dialog.png)
-* after selecting the file the program will display the word grid with all the found words marked in green.\
+* After selecting the file the program will display the word grid with all the found words marked in green.\
 ![picking a file screen](images/final_screen.png)

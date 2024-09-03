@@ -15,4 +15,4 @@ When I started this project I wanted the display of the solution to show the let
 In order to simplify the running of the program, I created an executable of the project. To run it simply download the `.exe` file named `solver_app.exe`.
 ## Demo:
 * after starting the program, a window will open asking you to select a word search text file
-  ![opening file screen](images/file_selector.png)
+  \n![opening file screen](images/file_selector.png)

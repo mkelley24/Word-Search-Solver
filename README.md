@@ -18,5 +18,5 @@ In order to simplify the running of the program, I created an executable of the 
 ![opening file screen](images/file_selector.png)
 * After clicking the button, the file dialog screen will open to allow you to choose a file\
 ![picking a file screen](images/file_dialog.png)
-* After selecting the file the program will display the word grid with all the found words marked in green. (The file used in this case was the `coding_puzzle.txt` found in the puzzles folder)\
+* After selecting the file the program will display the word grid with all the found words marked in green. (The file used in this case was the `coding_puzzle.txt` found in the `puzzles` folder)\
 ![picking a file screen](images/final_screen.png)
